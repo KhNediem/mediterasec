@@ -1,0 +1,50 @@
+{
+  "navbar": {
+    "about": "À Propos",
+    "partnership": "Partenariat",
+    "contact": "Contact",
+    "pricing": "Tarifs",
+    "discoverPulse": "Découvrir Pulse"
+  },
+  "footer": {
+    "description": "Solutions de cybersécurité centrées sur l'humain conçues spécifiquement pour les PME. Rendre la sécurité accessible, exploitable et sereine.",
+    "solutions": "Solutions",
+    "company": "Entreprise",
+    "pulseIds": "Pulse IDS",
+    "pricing": "Tarifs",
+    "aboutUs": "À Propos",
+    "partnership": "Partenariat",
+    "contact": "Contact",
+    "copyright": "MediteraSec. Tous droits réservés. En poursuite du pré-label Startup Act en Tunisie.",
+    "terms": "Conditions d'utilisation",
+    "privacy": "Politique de confidentialité"
+  },
+  "home": {
+    "heroTag": "Sécurité Intelligente",
+    "heroTitle": "Rendre la cybersécurité accessible, intelligente et pratique.",
+    "heroSubtitle": "Mediterasec développe des technologies de sécurité intelligentes axées sur la détection d'intrusions, l'analyse des menaces et la résilience des systèmes numériques.",
+    "exploreSolutions": "Explorer les Solutions",
+    "contact": "Contact",
+    "companyTitle": "Mediterasec",
+    "companyDescription": "est une entreprise de cybersécurité axée sur le développement de technologies défensives modernes grâce à l'ingénierie basée sur la recherche et aux approches de sécurité basées sur l'IA.",
+    "coreAreas": "Domaines Principaux",
+    "coreSubtitle": "Des piliers défensifs conçus pour la résilience moderne.",
+    "core1Title": "Détection d'Intrusions",
+    "core1Desc": "Systèmes de détection basés sur les hôtes et les réseaux conçus pour les environnements modernes.",
+    "core2Title": "Analyse des Menaces",
+    "core2Desc": "Surveillance en temps réel et analyse des anomalies pour les cybermenaces en évolution.",
+    "core3Title": "Ingénierie de Sécurité",
+    "core3Desc": "Architectures évolutives et légères pour la protection des infrastructures.",
+    "core4Title": "Sécurité par l'IA",
+    "core4Desc": "Approches d'apprentissage automatique pour des opérations de cybersécurité intelligentes.",
+    "expertise": "Expertise Principale",
+    "tech1": "Apprentissage Automatique",
+    "tech2": "Sécurité Réseau",
+    "tech3": "Détection des Menaces",
+    "tech4": "Surveillance d'Infrastructure",
+    "tech5": "Noyau Linux",
+    "tech6": "Architecture Cloud",
+    "tech7": "Modèles Python",
+    "tech8": "Réponse Automatisée"
+  }
+}

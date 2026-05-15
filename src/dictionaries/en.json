@@ -1,0 +1,50 @@
+{
+  "navbar": {
+    "about": "About",
+    "partnership": "Partnership",
+    "contact": "Contact",
+    "pricing": "Pricing",
+    "discoverPulse": "Discover Pulse"
+  },
+  "footer": {
+    "description": "Human-centered cybersecurity solutions designed specifically for SMEs. Making security accessible, actionable, and calm.",
+    "solutions": "Solutions",
+    "company": "Company",
+    "pulseIds": "Pulse IDS",
+    "pricing": "Pricing",
+    "aboutUs": "About Us",
+    "partnership": "Partnership",
+    "contact": "Contact",
+    "copyright": "MediteraSec. All rights reserved. Pursuing the pre-label Startup Act in Tunisia.",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy"
+  },
+  "home": {
+    "heroTag": "Intelligent Security",
+    "heroTitle": "Making cybersecurity accessible, intelligent, and practical.",
+    "heroSubtitle": "Mediterasec develops intelligent security technologies focused on intrusion detection, threat analysis, and resilient digital systems.",
+    "exploreSolutions": "Explore Solutions",
+    "contact": "Contact",
+    "companyTitle": "Mediterasec",
+    "companyDescription": "is a cybersecurity company focused on building modern defensive technologies through research-driven engineering and AI-powered security approaches.",
+    "coreAreas": "Core Areas",
+    "coreSubtitle": "Defensive pillars built for modern resilience.",
+    "core1Title": "Intrusion Detection",
+    "core1Desc": "Host and network-based detection systems designed for modern environments.",
+    "core2Title": "Threat Analysis",
+    "core2Desc": "Real-time monitoring and anomaly analysis for evolving cyber threats.",
+    "core3Title": "Security Engineering",
+    "core3Desc": "Scalable and lightweight architectures for infrastructure protection.",
+    "core4Title": "AI-Driven Security",
+    "core4Desc": "Machine learning approaches for intelligent cybersecurity operations.",
+    "expertise": "Core Expertise",
+    "tech1": "Machine Learning",
+    "tech2": "Network Security",
+    "tech3": "Threat Detection",
+    "tech4": "Infrastructure Monitoring",
+    "tech5": "Linux Core",
+    "tech6": "Cloud Architecture",
+    "tech7": "Python Models",
+    "tech8": "Automated Response"
+  }
+}
