@@ -2,15 +2,60 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { 
   ShieldCheck, 
   Activity, 
   Network, 
   BrainCircuit, 
-  ArrowRight
+  ArrowRight,
+  CheckCircle,
+  AlertCircle
 } from "lucide-react";
 
 export default function PulsePage() {
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+    company: "",
+    role: "",
+  });
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitStatus("loading");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formState),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to join waitlist");
+      }
+
+      console.log("[v0] Waitlist signup successful:", data);
+      setSubmitStatus("success");
+      setFormState({ name: "", email: "", company: "", role: "" });
+
+      // Reset success message after 5 seconds
+      setTimeout(() => setSubmitStatus("idle"), 5000);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "An error occurred";
+      console.error("[v0] Waitlist signup error:", message);
+      setErrorMessage(message);
+      setSubmitStatus("error");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-meditera-white text-meditera-black font-sans selection:bg-[var(--color-pulse-navy)] selection:text-white">
@@ -181,90 +226,129 @@ export default function PulsePage() {
               </div>
 
               <div className="relative bg-white rounded-2xl shadow-2xl shadow-blue-900/5 border border-gray-200 p-8 md:p-10">
-                <form onSubmit={(e) => {
-                  e.preventDefault();
-                  const formData = new FormData(e.currentTarget);
-                  const data = Object.fromEntries(formData);
-                  console.log("[v0] Waitlist signup:", data);
-                  (e.target as HTMLFormElement).reset();
-                }} className="space-y-5">
-                  {/* Name Field */}
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-semibold text-meditera-black mb-2">
-                      Full Name
-                    </label>
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      required
-                      placeholder="Your name"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 text-meditera-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-pulse-navy)] focus:border-transparent transition-all duration-300"
-                    />
+                {submitStatus === "success" ? (
+                  <div className="text-center py-8">
+                    <div className="flex justify-center mb-4">
+                      <CheckCircle className="w-16 h-16 text-green-500" />
+                    </div>
+                    <h3 className="text-xl font-bold text-meditera-black mb-2">
+                      Welcome to Early Access!
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      Thank you for joining our waitlist. We&apos;ll be in touch soon with exclusive updates and early access details.
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      Check your email at <span className="font-semibold">{formState.email}</span> for confirmation.
+                    </p>
                   </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    {/* Error Message */}
+                    {submitStatus === "error" && (
+                      <div className="flex items-gap-3 p-4 rounded-lg bg-red-50 border border-red-200">
+                        <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                        <p className="text-sm text-red-700">{errorMessage}</p>
+                      </div>
+                    )}
 
-                  {/* Email Field */}
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-semibold text-meditera-black mb-2">
-                      Email Address
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      placeholder="you@company.com"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 text-meditera-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-pulse-navy)] focus:border-transparent transition-all duration-300"
-                    />
-                  </div>
+                    {/* Name Field */}
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-semibold text-meditera-black mb-2">
+                        Full Name
+                      </label>
+                      <input
+                        id="name"
+                        type="text"
+                        required
+                        placeholder="Your name"
+                        value={formState.name}
+                        onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                        disabled={submitStatus === "loading"}
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 text-meditera-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-pulse-navy)] focus:border-transparent transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                      />
+                    </div>
 
-                  {/* Company Field */}
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-semibold text-meditera-black mb-2">
-                      Company
-                    </label>
-                    <input
-                      id="company"
-                      name="company"
-                      type="text"
-                      placeholder="Your company"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 text-meditera-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-pulse-navy)] focus:border-transparent transition-all duration-300"
-                    />
-                  </div>
+                    {/* Email Field */}
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-semibold text-meditera-black mb-2">
+                        Email Address
+                      </label>
+                      <input
+                        id="email"
+                        type="email"
+                        required
+                        placeholder="you@company.com"
+                        value={formState.email}
+                        onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                        disabled={submitStatus === "loading"}
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 text-meditera-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-pulse-navy)] focus:border-transparent transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                      />
+                    </div>
 
-                  {/* Role Field */}
-                  <div>
-                    <label htmlFor="role" className="block text-sm font-semibold text-meditera-black mb-2">
-                      Role
-                    </label>
-                    <select
-                      id="role"
-                      name="role"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 text-meditera-black focus:outline-none focus:ring-2 focus:ring-[var(--color-pulse-navy)] focus:border-transparent transition-all duration-300"
+                    {/* Company Field */}
+                    <div>
+                      <label htmlFor="company" className="block text-sm font-semibold text-meditera-black mb-2">
+                        Company
+                      </label>
+                      <input
+                        id="company"
+                        type="text"
+                        placeholder="Your company"
+                        value={formState.company}
+                        onChange={(e) => setFormState({ ...formState, company: e.target.value })}
+                        disabled={submitStatus === "loading"}
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 text-meditera-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--color-pulse-navy)] focus:border-transparent transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                      />
+                    </div>
+
+                    {/* Role Field */}
+                    <div>
+                      <label htmlFor="role" className="block text-sm font-semibold text-meditera-black mb-2">
+                        Role
+                      </label>
+                      <select
+                        id="role"
+                        value={formState.role}
+                        onChange={(e) => setFormState({ ...formState, role: e.target.value })}
+                        disabled={submitStatus === "loading"}
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 text-meditera-black focus:outline-none focus:ring-2 focus:ring-[var(--color-pulse-navy)] focus:border-transparent transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        <option value="">Select your role</option>
+                        <option value="security-engineer">Security Engineer</option>
+                        <option value="ciso">CISO</option>
+                        <option value="it-manager">IT Manager</option>
+                        <option value="network-admin">Network Administrator</option>
+                        <option value="researcher">Security Researcher</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+
+                    {/* Submit Button */}
+                    <button
+                      type="submit"
+                      disabled={submitStatus === "loading"}
+                      className="w-full py-4 mt-6 rounded-xl bg-[var(--color-pulse-navy)] text-white font-bold text-sm hover:bg-[#0c2c4d] shadow-lg shadow-blue-900/20 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                     >
-                      <option value="">Select your role</option>
-                      <option value="security-engineer">Security Engineer</option>
-                      <option value="ciso">CISO</option>
-                      <option value="it-manager">IT Manager</option>
-                      <option value="network-admin">Network Administrator</option>
-                      <option value="researcher">Security Researcher</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
+                      {submitStatus === "loading" ? (
+                        <>
+                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                          <span>Joining...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>Join the Waitlist</span>
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </>
+                      )}
+                    </button>
+                  </form>
+                )}
 
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    className="w-full py-4 mt-6 rounded-xl bg-[var(--color-pulse-navy)] text-white font-bold text-sm hover:bg-[#0c2c4d] shadow-lg shadow-blue-900/20 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group"
-                  >
-                    <span>Join the Waitlist</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </form>
-
-                <p className="text-xs text-gray-500 text-center mt-6 leading-relaxed">
-                  We&apos;re preparing something special. Early access members will receive priority onboarding and exclusive insights into new features.
-                </p>
+                {submitStatus !== "success" && (
+                  <p className="text-xs text-gray-500 text-center mt-6 leading-relaxed">
+                    We&apos;re preparing something special. Early access members will receive priority onboarding and exclusive insights into new features.
+                  </p>
+                )}
               </div>
             </div>
           </div>
