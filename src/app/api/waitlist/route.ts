@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/server';
+import { createClient as createBrowserClient } from '@supabase/supabase-js';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
@@ -13,8 +13,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create Supabase client
-    const supabase = await createClient();
+    // Create Supabase client with service role key for admin access
+    const supabase = createBrowserClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    );
+
+    console.log('[v0] Attempting to insert:', { name, email, company, role });
 
     // Insert into waitlist table
     const { data, error } = await supabase
@@ -33,7 +38,7 @@ export async function POST(request: NextRequest) {
     if (error) {
       console.error('[v0] Supabase error:', error);
       return NextResponse.json(
-        { error: 'Failed to join waitlist' },
+        { error: `Failed to join waitlist: ${error.message}` },
         { status: 500 }
       );
     }
@@ -51,7 +56,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('[v0] API error:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: `Internal server error: ${error instanceof Error ? error.message : 'Unknown error'}` },
       { status: 500 }
     );
   }
