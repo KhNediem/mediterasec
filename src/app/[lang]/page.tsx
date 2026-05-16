@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { 
   ShieldAlert, 
   ActivitySquare, 
@@ -68,7 +69,7 @@ export default async function Home(props: { params: Promise<{ lang: string }> })
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link 
-                href={`/${lang}/pulse`} 
+                href={`/${lang}/pulse#how-it-works`} 
                 className="inline-flex items-center justify-center px-8 py-4 text-sm font-semibold transition-all duration-200 bg-white border border-gray-300 rounded-full text-meditera-black hover:bg-gray-50 hover:border-gray-400"
               >
                 {dict.ctaSecondary}
@@ -147,6 +148,7 @@ export default async function Home(props: { params: Promise<{ lang: string }> })
               </div>
             </div>
           </div>
+
         </div>
       </section>
 

@@ -59,10 +59,10 @@ export async function generateMetadata(props: { params: Promise<{ lang: string }
       siteName: "MediteraSec",
       images: [
         {
-          url: "/pulseLogo.png",
-          width: 800,
-          height: 600,
-          alt: "MediteraSec Logo",
+          url: "/og-banner.png",
+          width: 1200,
+          height: 630,
+          alt: "MediteraSec - Human-Centered Cybersecurity for SMEs",
         },
       ],
       locale: lang === "fr" ? "fr_FR" : "en_US",
@@ -72,7 +72,7 @@ export async function generateMetadata(props: { params: Promise<{ lang: string }
       card: "summary_large_image",
       title: dict.title,
       description: dict.description,
-      images: ["/pulseLogo.png"],
+      images: ["/og-banner.png"],
     },
   };
 }

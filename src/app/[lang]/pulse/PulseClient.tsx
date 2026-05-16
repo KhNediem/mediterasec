@@ -181,7 +181,7 @@ export default function PulseClient({ dict, lang }: PulseClientProps) {
       </section>
 
       {/* 4. How Pulse Works - Redesigned Architecture Section */}
-      <section className="py-32 px-6 lg:px-8 bg-[var(--color-pulse-navy)] text-white overflow-hidden relative">
+      <section id="how-it-works" className="py-32 px-6 lg:px-8 bg-[var(--color-pulse-navy)] text-white overflow-hidden relative">
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
 
         <div className="mx-auto max-w-6xl text-center relative z-10">
