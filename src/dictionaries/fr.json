@@ -174,5 +174,28 @@
     "ctaBottomTitle": "Prêt à explorer la détection intelligente ?",
     "ctaBottomSales": "Contacter les Ventes",
     "ctaBottomDemo": "Demander une Démo"
+  },
+  "contact": {
+    "title": "Contactez Notre Équipe",
+    "subtitle": "Vous avez des questions sur Pulse ou souhaitez explorer un partenariat ? Nous sommes là pour vous aider à naviguer dans l'avenir de la sécurité des PME.",
+    "infoTitle": "Informations de Contact",
+    "infoDesc": "Contactez-nous directement ou remplissez le formulaire et nous vous répondrons dans les 24 heures.",
+    "emailLabel": "Email",
+    "emailValue": "mediterasec@gmail.com",
+    "locationLabel": "Emplacement",
+    "locationValue": "Tunis, Tunisie",
+    "socialLabel": "Suivez-nous",
+    "formTitle": "Envoyez-nous un message",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "company": "Entreprise",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Envoyer le Message",
+    "sending": "Envoi en cours...",
+    "successTitle": "Message envoyé avec succès !",
+    "successDesc": "Merci de nous avoir contactés. Un membre de notre équipe vous répondra sous peu.",
+    "errorTitle": "Échec de l'envoi du message.",
+    "errorDesc": "Veuillez réessayer plus tard ou nous envoyer un e-mail directement."
   }
 }

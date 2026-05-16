@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { createClient } from '@/utils/supabase/server';
 
 export async function POST(request: Request) {
   try {
@@ -11,12 +12,35 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    // Configure the SMTP transporter
-    // Note: These need to be set in your .env.local file
+    // 1. Save to Supabase
+    try {
+      const supabase = await createClient();
+      const { error: dbError } = await supabase
+        .from('contact_inquiries')
+        .insert([
+          { 
+            first_name: firstName, 
+            last_name: lastName, 
+            company: company || null, 
+            email, 
+            message,
+            status: 'new'
+          }
+        ]);
+
+      if (dbError) {
+        console.error('Supabase error:', dbError);
+        // We continue even if DB fails, so the email is still attempted
+      }
+    } catch (dbEx) {
+      console.error('Database exception:', dbEx);
+    }
+
+    // 2. Send Email Notification
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || 'smtp.gmail.com',
       port: Number(process.env.SMTP_PORT) || 587,
-      secure: process.env.SMTP_SECURE === 'true', // true for 465, false for 587
+      secure: process.env.SMTP_SECURE === 'true',
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
@@ -25,7 +49,7 @@ export async function POST(request: Request) {
 
     const mailOptions = {
       from: process.env.SMTP_USER || 'no-reply@mediterasec.com', 
-      to: process.env.CONTACT_EMAIL || 'contact@mediterasec.com', 
+      to: 'mediterasec@gmail.com', 
       replyTo: email,
       subject: `New Website Inquiry from ${firstName} ${lastName}`,
       text: `
@@ -53,9 +77,9 @@ export async function POST(request: Request) {
 
     await transporter.sendMail(mailOptions);
 
-    return NextResponse.json({ message: 'Email sent successfully' }, { status: 200 });
+    return NextResponse.json({ message: 'Inquiry received successfully' }, { status: 200 });
   } catch (error) {
-    console.error('Error sending email:', error);
-    return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
+    console.error('Error handling contact form:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
