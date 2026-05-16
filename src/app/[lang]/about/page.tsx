@@ -1,12 +1,24 @@
 import Link from "next/link";
 import { ShieldAlert, BrainCircuit, Network, BookOpen, Quote } from "lucide-react";
 
-export const metadata = {
-  title: "About | MediteraSec",
-  description: "Mediterasec is a cybersecurity company focused on building intelligent, accessible, and human-centered security technologies.",
-};
+import { getDictionary } from "@/lib/dictionary";
+import type { Locale } from "@/middleware";
+import { Metadata } from "next";
 
-export default function AboutPage() {
+export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await props.params;
+  const locale = lang as Locale;
+  const dict = (await getDictionary(locale)).metadata.about;
+
+  return {
+    title: dict.title,
+    description: dict.description,
+  };
+}
+
+
+export default async function AboutPage(props: { params: Promise<{ lang: string }> }) {
+  const { lang } = await props.params;
   return (
     <div className="flex flex-col w-full bg-meditera-white overflow-hidden">
       
@@ -167,7 +179,7 @@ export default function AboutPage() {
             Interested in exploring collaboration opportunities?
           </h2>
           <Link 
-            href="/contact" 
+            href={`/${lang}/contact`} 
             className="inline-flex items-center justify-center px-10 py-5 text-sm font-semibold transition-all duration-300 bg-meditera-black border border-transparent rounded-full text-white hover:bg-meditera-darkgray shadow-xl hover:-translate-y-1"
           >
             Get in Touch

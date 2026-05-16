@@ -46,5 +46,35 @@
     "tech6": "Architecture Cloud",
     "tech7": "Modèles Python",
     "tech8": "Réponse Automatisée"
+  },
+  "metadata": {
+    "home": {
+      "title": "MediteraSec | Cybersécurité centrée sur l'humain",
+      "description": "Solutions de cybersécurité centrées sur l'humain conçues pour les PME. En poursuite du pré-label Startup Act en Tunisie."
+    },
+    "pulse": {
+      "title": "Pulse - Détection d'intrusions intelligente",
+      "description": "Surveillez, analysez et répondez aux menaces avec Pulse, notre plateforme de détection d'intrusions."
+    },
+    "about": {
+      "title": "À Propos de Nous",
+      "description": "En savoir plus sur MediteraSec et notre mission de rendre la cybersécurité accessible et intelligente."
+    },
+    "contact": {
+      "title": "Contactez-nous",
+      "description": "Contactez l'équipe MediteraSec pour toute demande, assistance ou partenariat."
+    },
+    "partnership": {
+      "title": "Programme de Partenariat",
+      "description": "Collaborez avec MediteraSec pour apporter des solutions de cybersécurité intelligentes à plus d'organisations."
+    },
+    "privacy": {
+      "title": "Politique de Confidentialité",
+      "description": "Notre engagement envers la protection de vos données et de votre vie privée."
+    },
+    "terms": {
+      "title": "Conditions d'Utilisation",
+      "description": "Les conditions d'utilisation des services de MediteraSec."
+    }
   }
 }

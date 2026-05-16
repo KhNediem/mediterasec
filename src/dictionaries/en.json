@@ -46,5 +46,35 @@
     "tech6": "Cloud Architecture",
     "tech7": "Python Models",
     "tech8": "Automated Response"
+  },
+  "metadata": {
+    "home": {
+      "title": "MediteraSec | Human-Centered Cybersecurity",
+      "description": "Human-centered cybersecurity solutions designed specifically for SMEs. Pursuing the pre-label Startup Act in Tunisia."
+    },
+    "pulse": {
+      "title": "Pulse - Intelligent Intrusion Detection",
+      "description": "Monitor, analyze, and respond to threats with Pulse, our human-centered intrusion detection platform."
+    },
+    "about": {
+      "title": "About Us",
+      "description": "Learn more about MediteraSec and our mission to make cybersecurity accessible and intelligent."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "Get in touch with the MediteraSec team for inquiries, support, or partnerships."
+    },
+    "partnership": {
+      "title": "Partnership Program",
+      "description": "Collaborate with MediteraSec to bring intelligent cybersecurity solutions to more organizations."
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "Our commitment to protecting your data and privacy."
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "description": "The terms and conditions for using MediteraSec's services."
+    }
   }
 }

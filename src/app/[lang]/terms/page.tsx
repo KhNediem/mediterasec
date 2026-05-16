@@ -1,16 +1,28 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
-export const metadata = {
-  title: "Terms of Service | MediteraSec",
-  description: "Terms of Service and User Agreement for MediteraSec.",
-};
+import { getDictionary } from "@/lib/dictionary";
+import type { Locale } from "@/middleware";
+import { Metadata } from "next";
 
-export default function TermsPage() {
+export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await props.params;
+  const locale = lang as Locale;
+  const dict = (await getDictionary(locale)).metadata.terms;
+
+  return {
+    title: dict.title,
+    description: dict.description,
+  };
+}
+
+
+export default async function TermsPage(props: { params: Promise<{ lang: string }> }) {
+  const { lang } = await props.params;
   return (
     <div className="bg-meditera-white min-h-screen py-24 px-6 lg:px-8">
       <div className="mx-auto max-w-3xl">
-        <Link href="/" className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-meditera-black mb-8 transition-colors">
+        <Link href={`/${lang}`} className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-meditera-black mb-8 transition-colors">
           <ArrowLeft className="w-4 h-4 mr-2" /> Back to home
         </Link>
         <h1 className="text-3xl font-bold tracking-tight text-meditera-black sm:text-4xl mb-8">Terms of Service</h1>
@@ -39,7 +51,7 @@ export default function TermsPage() {
 
           <h2 className="text-xl font-bold text-meditera-black mt-8 mb-4">5. Contact Information</h2>
           <p className="mb-4">
-            For questions regarding these terms, please reach out to us via our <Link href="/contact" className="text-[var(--color-pulse-navy)] hover:underline">contact page</Link>.
+            For questions regarding these terms, please reach out to us via our <Link href={`/${lang}/contact`} className="text-[var(--color-pulse-navy)] hover:underline">contact page</Link>.
           </p>
         </div>
       </div>

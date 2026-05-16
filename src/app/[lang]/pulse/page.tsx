@@ -13,7 +13,11 @@ import {
   AlertCircle
 } from "lucide-react";
 
+import { useParams } from "next/navigation";
+
 export default function PulsePage() {
+  const params = useParams();
+  const lang = params.lang as string;
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -89,7 +93,7 @@ export default function PulsePage() {
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </a>
               <Link 
-                href="/contact" 
+                href={`/${lang}/contact`} 
                 className="inline-flex items-center justify-center px-8 py-4 text-sm font-semibold transition-all duration-200 bg-white border border-gray-300 rounded-full text-meditera-black hover:bg-gray-50 hover:border-gray-400"
               >
                 Contact Us
@@ -363,13 +367,13 @@ export default function PulsePage() {
           </h2>
           <div className="flex flex-wrap justify-center gap-4">
             <Link 
-              href="/contact" 
+              href={`/${lang}/contact`} 
               className="inline-flex items-center justify-center px-8 py-4 text-sm font-semibold transition-all duration-300 bg-[var(--color-pulse-navy)] border border-transparent rounded-full text-white hover:bg-[#0c2c4d] shadow-xl hover:-translate-y-1"
             >
               Contact Sales
             </Link>
             <Link 
-              href="/contact" 
+              href={`/${lang}/contact`} 
               className="inline-flex items-center justify-center px-8 py-4 text-sm font-semibold transition-all duration-200 bg-white border border-gray-300 rounded-full text-meditera-black hover:bg-gray-50 hover:border-gray-400"
             >
               Request a Demo

@@ -12,12 +12,24 @@ import {
   ArrowRight
 } from "lucide-react";
 
-export const metadata = {
-  title: "Partnerships | MediteraSec",
-  description: "We collaborate with organizations, researchers, and technology partners to advance accessible and intelligent cybersecurity solutions.",
-};
+import { getDictionary } from "@/lib/dictionary";
+import type { Locale } from "@/middleware";
+import { Metadata } from "next";
 
-export default function PartnershipPage() {
+export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await props.params;
+  const locale = lang as Locale;
+  const dict = (await getDictionary(locale)).metadata.partnership;
+
+  return {
+    title: dict.title,
+    description: dict.description,
+  };
+}
+
+
+export default async function PartnershipPage(props: { params: Promise<{ lang: string }> }) {
+  const { lang } = await props.params;
   return (
     <div className="flex flex-col w-full bg-meditera-white overflow-hidden">
       
@@ -40,14 +52,14 @@ export default function PartnershipPage() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
-              href="/contact"
+              href={`/${lang}/contact`}
               className="group relative inline-flex items-center justify-center px-8 py-4 text-sm font-semibold text-white transition-all duration-200 bg-meditera-black border border-transparent rounded-full hover:bg-meditera-darkgray hover:shadow-xl hover:-translate-y-0.5"
             >
               Contact Us
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link 
-              href="/contact" 
+              href={`/${lang}/contact`} 
               className="inline-flex items-center justify-center px-8 py-4 text-sm font-semibold transition-all duration-200 bg-white border border-gray-300 rounded-full text-meditera-black hover:bg-gray-50 hover:border-gray-400"
             >
               Discuss a Partnership
@@ -232,13 +244,13 @@ export default function PartnershipPage() {
             <h4 className="text-xl font-medium text-meditera-black">Interested in partnering with Mediterasec?</h4>
             <div className="flex flex-wrap justify-center gap-4">
               <Link 
-                href="/contact" 
+                href={`/${lang}/contact`} 
                 className="inline-flex items-center justify-center px-8 py-4 text-sm font-semibold transition-all duration-300 bg-meditera-black border border-transparent rounded-full text-white hover:bg-meditera-darkgray shadow-xl hover:-translate-y-1"
               >
                 Contact Us
               </Link>
               <Link 
-                href="/contact" 
+                href={`/${lang}/contact`} 
                 className="inline-flex items-center justify-center px-8 py-4 text-sm font-semibold transition-all duration-200 bg-white border border-gray-300 rounded-full text-meditera-black hover:bg-gray-50 hover:border-gray-400"
               >
                 Start a Conversation
