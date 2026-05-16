@@ -12,7 +12,10 @@ import {
   Terminal,
   CloudCog,
   Bot,
-  Network
+  Network,
+  GraduationCap,
+  Award,
+  Handshake
 } from "lucide-react";
 import { getDictionary } from "@/lib/dictionary";
 import type { Locale } from "@/middleware";
@@ -277,20 +280,52 @@ export default async function Home(props: { params: Promise<{ lang: string }> })
       </section>
 
       {/* 6. Trust & Recognition Section */}
-      <section className="py-24 px-6 lg:px-8 bg-white border-t border-gray-100">
-         <div className="mx-auto max-w-7xl">
-            <h2 className="text-center text-sm font-bold tracking-widest text-gray-400 uppercase mb-12">{dict.trustTitle}</h2>
-            <div className="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-60 hover:opacity-100 transition-opacity">
-               <div className="flex flex-col items-center">
-                  <span className="font-bold text-lg text-meditera-black">{dict.trust1}</span>
+      <section className="py-24 px-6 lg:px-8 bg-gray-50 border-t border-gray-100 overflow-hidden relative">
+         <div className="mx-auto max-w-7xl relative z-10">
+            <div className="text-center mb-16">
+               <h2 className="text-sm font-bold tracking-[0.2em] text-gray-400 uppercase mb-4">{dict.trustTitle}</h2>
+               <div className="h-1 w-12 bg-meditera-black mx-auto rounded-full"></div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+               {/* Card 1 */}
+               <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                  <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-meditera-black transition-colors duration-300">
+                     <GraduationCap className="w-6 h-6 text-gray-400 group-hover:text-white transition-colors duration-300" />
+                  </div>
+                  <h3 className="font-bold text-lg text-meditera-black mb-2">{dict.trust1Title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                     {dict.trust1Desc}
+                  </p>
                </div>
-               <div className="flex flex-col items-center">
-                  <span className="font-bold text-lg text-meditera-black">{dict.trust2}</span>
+
+               {/* Card 2 */}
+               <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                  <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-meditera-black transition-colors duration-300">
+                     <Award className="w-6 h-6 text-gray-400 group-hover:text-white transition-colors duration-300" />
+                  </div>
+                  <h3 className="font-bold text-lg text-meditera-black mb-2">{dict.trust2Title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                     {dict.trust2Desc}
+                  </p>
                </div>
-               <div className="flex flex-col items-center">
-                  <span className="font-bold text-lg text-meditera-black">{dict.trust3}</span>
+
+               {/* Card 3 */}
+               <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                  <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-meditera-black transition-colors duration-300">
+                     <Handshake className="w-6 h-6 text-gray-400 group-hover:text-white transition-colors duration-300" />
+                  </div>
+                  <h3 className="font-bold text-lg text-meditera-black mb-2">{dict.trust3Title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                     {dict.trust3Desc}
+                  </p>
                </div>
             </div>
+         </div>
+
+         {/* Background Decorative Element */}
+         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none opacity-[0.02]">
+            <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(#000 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
          </div>
       </section>
 

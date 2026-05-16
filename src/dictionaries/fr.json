@@ -1,5 +1,6 @@
 {
   "navbar": {
+    "home": "Accueil",
     "about": "À Propos",
     "partnership": "Partenariat",
     "contact": "Contact",
@@ -44,9 +45,12 @@
     "proofStat": "97%+",
     "proofDesc": "Le modèle ML de Pulse atteint une grande précision de détection sur les intrusions réseau, avec un taux de faux positifs assez bas pour être géré par une seule personne.",
     "trustTitle": "Confiance & Reconnaissance",
-    "trust1": "Soutenu par le programme d'ingénierie MedTech",
-    "trust2": "En cours d'obtention du pré-label Startup Act (Tunisie)",
-    "trust3": "Développé avec WeMake"
+    "trust1Title": "Fondation Académique",
+    "trust1Desc": "Né d'une recherche rigoureuse en ingénierie et d'une excellence technique chez MedTech.",
+    "trust2Title": "Potentiel d'Innovation",
+    "trust2Desc": "En cours d'inscription pour le pré-label Startup Act tunisien afin de rejoindre l'écosystème technologique national.",
+    "trust3Title": "Validé par l'Industrie",
+    "trust3Desc": "Testé et affiné dans des environnements PME réels en partenariat avec WeMake."
   },
   "about": {
     "title": "À Propos de MediteraSec",

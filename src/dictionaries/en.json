@@ -1,5 +1,6 @@
 {
   "navbar": {
+    "home": "Home",
     "about": "About",
     "partnership": "Partnership",
     "contact": "Contact",
@@ -44,9 +45,12 @@
     "proofStat": "97%+",
     "proofDesc": "Pulse's ML model achieves high detection accuracy on network intrusion events, with a false positive rate low enough for a team of one to handle alerts.",
     "trustTitle": "Trust & Recognition",
-    "trust1": "Backed by MedTech Engineering Program",
-    "trust2": "Pursuing Startup Act pre-label (Tunisia)",
-    "trust3": "Developed with WeMake"
+    "trust1Title": "Academic Foundation",
+    "trust1Desc": "Born from rigorous engineering research and technical excellence at MedTech.",
+    "trust2Title": "Innovation Potential",
+    "trust2Desc": "Currently enrolling in the Tunisian Startup Act pre-label process to join the national tech ecosystem.",
+    "trust3Title": "Industry Validated",
+    "trust3Desc": "Tested and refined in real-world SME environments in partnership with WeMake."
   },
   "about": {
     "title": "About MediteraSec",

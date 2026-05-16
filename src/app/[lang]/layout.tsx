@@ -110,7 +110,7 @@ export default async function RootLayout(props: Readonly<{
       <body className="min-h-full flex flex-col bg-meditera-white text-meditera-black">
         <JsonLd data={organizationSchema} />
         <Navbar lang={lang} dict={dict.navbar} />
-        <main className="flex-grow pt-20">
+        <main className="flex-grow pt-28">
           {children}
         </main>
         <Footer lang={lang} dict={dict.footer} />
