@@ -39,7 +39,7 @@ export default function Navbar({ lang, dict }: { lang: string, dict: any }) {
             <Link href={`/${lang}/contact`} className="text-meditera-darkgray hover:text-meditera-black transition-colors font-medium">
               {dict.contact}
             </Link>
-            <Link href={`/${lang}/pulse#pricing`} className="text-meditera-darkgray hover:text-meditera-black transition-colors font-medium">
+            <Link href={`/${lang}/pulse#early-access`} className="text-meditera-darkgray hover:text-meditera-black transition-colors font-medium">
               {dict.pricing}
             </Link>
             
@@ -94,7 +94,7 @@ export default function Navbar({ lang, dict }: { lang: string, dict: any }) {
               {dict.contact}
             </Link>
             <Link 
-              href={`/${lang}/pulse#pricing`} 
+              href={`/${lang}/pulse#early-access`} 
               className="block px-3 py-2 rounded-md text-base font-medium text-meditera-darkgray hover:text-meditera-black hover:bg-meditera-gray transition-colors"
               onClick={() => setIsOpen(false)}
             >

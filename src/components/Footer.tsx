@@ -49,7 +49,7 @@ export default function Footer({ lang, dict }: { lang: string, dict: any }) {
               </Link>
             </li>
             <li>
-              <Link href={`/${lang}/pulse#pricing`} className="text-meditera-darkgray hover:text-meditera-black transition-colors">
+              <Link href={`/${lang}/pulse#early-access`} className="text-meditera-darkgray hover:text-meditera-black transition-colors">
                 {dict.pricing}
               </Link>
             </li>

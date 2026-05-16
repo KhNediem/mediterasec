@@ -18,58 +18,64 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://mediterasec.com"),
-  title: {
-    default: "MediteraSec | Human-Centered Cybersecurity",
-    template: "%s | MediteraSec",
-  },
-  description: "Human-centered cybersecurity solutions designed specifically for SMEs. Pursuing the pre-label Startup Act in Tunisia.",
-  keywords: ["cybersecurity", "SME", "Tunisia", "human-centered", "security", "startup", "intrusion detection"],
-  authors: [{ name: "MediteraSec Team" }],
-  creator: "MediteraSec",
-  publisher: "MediteraSec",
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await props.params;
+  const locale = lang as Locale;
+  const dict = (await getDictionary(locale)).metadata.home;
+
+  return {
+    metadataBase: new URL("https://mediterasec.com"),
+    title: {
+      default: dict.title,
+      template: "%s | MediteraSec",
+    },
+    description: dict.description,
+    keywords: ["cybersecurity", "SME", "Tunisia", "human-centered", "security", "startup", "intrusion detection", "PME"],
+    authors: [{ name: "MediteraSec Team" }],
+    creator: "MediteraSec",
+    publisher: "MediteraSec",
+    robots: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  alternates: {
-    canonical: "https://mediterasec.com",
-    languages: {
-      'en-US': 'https://mediterasec.com/en',
-      'fr-FR': 'https://mediterasec.com/fr',
-    },
-  },
-  openGraph: {
-    title: "MediteraSec | Human-Centered Cybersecurity",
-    description: "Intelligent, human-centered cybersecurity technologies for modern infrastructure. Providing accessible, practical intrusion detection for SMEs.",
-    url: "https://mediterasec.com",
-    siteName: "MediteraSec",
-    images: [
-      {
-        url: "/pulseLogo.png",
-        width: 800,
-        height: 600,
-        alt: "MediteraSec Logo",
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
       },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "MediteraSec | Human-Centered Cybersecurity",
-    description: "Intelligent, human-centered cybersecurity technologies for modern infrastructure.",
-    images: ["/pulseLogo.png"],
-  },
-};
+    },
+    alternates: {
+      canonical: `https://mediterasec.com/${lang}`,
+      languages: {
+        'en-US': 'https://mediterasec.com/en',
+        'fr-FR': 'https://mediterasec.com/fr',
+      },
+    },
+    openGraph: {
+      title: dict.title,
+      description: dict.description,
+      url: `https://mediterasec.com/${lang}`,
+      siteName: "MediteraSec",
+      images: [
+        {
+          url: "/pulseLogo.png",
+          width: 800,
+          height: 600,
+          alt: "MediteraSec Logo",
+        },
+      ],
+      locale: lang === "fr" ? "fr_FR" : "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dict.title,
+      description: dict.description,
+      images: ["/pulseLogo.png"],
+    },
+  };
+}
 
 export default async function RootLayout(props: Readonly<{
   children: React.ReactNode;
