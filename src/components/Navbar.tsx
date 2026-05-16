@@ -68,10 +68,10 @@ export default function Navbar({ lang, dict }: { lang: string, dict: any }) {
               {dict.contact}
             </Link>
             <Link 
-              href={`/${lang}/pulse#early-access`} 
-              className={`px-5 py-2 text-sm font-bold transition-all rounded-full ${pathname === `/${lang}/pulse` ? 'bg-white shadow-sm text-meditera-black' : 'text-gray-500 hover:text-meditera-black hover:bg-white/50'}`}
+              href={`/${lang}/pulse`} 
+              className={`px-5 py-2 text-sm font-extrabold transition-all rounded-full ${pathname === `/${lang}/pulse` ? 'bg-white shadow-sm text-[#22416c] border border-[#7fbd94]/30' : 'bg-gradient-to-r from-[#7fbd94] to-[#22416c] text-white shadow-md hover:shadow-lg hover:-translate-y-0.5'}`}
             >
-              {dict.pricing}
+              {dict.discoverPulse}
             </Link>
           </div>
 
@@ -80,10 +80,10 @@ export default function Navbar({ lang, dict }: { lang: string, dict: any }) {
             <LanguageToggle currentLang={lang} />
             <div className="h-6 w-px bg-gray-200 mx-2"></div>
             <Link 
-              href={`/${lang}/pulse`} 
+              href={`/${lang}/pulse#early-access`} 
               className="group relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white transition-all duration-300 bg-meditera-black rounded-full hover:bg-meditera-darkgray hover:shadow-xl hover:shadow-black/20 active:scale-95"
             >
-              <span className="relative z-10">{dict.discoverPulse}</span>
+              <span className="relative z-10">{dict.pricing}</span>
               <ChevronRight className="w-4 h-4 ml-1 relative z-10 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -138,21 +138,21 @@ export default function Navbar({ lang, dict }: { lang: string, dict: any }) {
               <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link 
-              href={`/${lang}/pulse#early-access`} 
-              className={`flex items-center justify-between px-6 py-4 rounded-2xl text-lg font-bold transition-all group ${pathname === `/${lang}/pulse` ? 'bg-gray-100 text-meditera-black' : 'text-gray-500 hover:text-meditera-black hover:bg-gray-50'}`}
+              href={`/${lang}/pulse`} 
+              className={`flex items-center justify-between px-6 py-4 rounded-2xl text-lg font-extrabold transition-all group ${pathname === `/${lang}/pulse` ? 'bg-gray-100 text-[#22416c]' : 'bg-gradient-to-r from-[#7fbd94] to-[#22416c] text-white shadow-lg'}`}
               onClick={() => setIsOpen(false)}
             >
-              {dict.pricing} 
+              {dict.discoverPulse} 
               <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
           <div className="pt-6 border-t border-gray-100">
             <Link 
-              href={`/${lang}/pulse`} 
+              href={`/${lang}/pulse#early-access`} 
               className="flex items-center justify-center w-full px-8 py-5 rounded-2xl text-lg font-extrabold bg-meditera-black text-white hover:bg-meditera-darkgray transition-all shadow-2xl active:scale-[0.97]"
               onClick={() => setIsOpen(false)}
             >
-              {dict.discoverPulse}
+              {dict.pricing}
             </Link>
           </div>
         </div>
